@@ -18,9 +18,9 @@ export default function EmployeeVoiceRenderer({ content, sectionId }: any) {
             <div
               key={index}
               className="min-w-[350px] h-[250px] bg-gray-100 shadow-lg rounded-xl px-6 py-4 
-                         text-gray-700 border border-gray-200 flex flex-col justify-center"
+                         text-gray-700 border border-gray-200 flex flex-col justify-center whitespace-normal"
             >
-              <p className="text-md italic">“{q.body}”</p>
+              <p className="text-md italic break-words">“{q.body}”</p>
               <p className="mt-2 text-right font-semibold">— {q.author}</p>
             </div>
           ))}
