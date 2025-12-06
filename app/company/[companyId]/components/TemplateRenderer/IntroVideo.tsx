@@ -4,21 +4,26 @@ import { motion } from "framer-motion";
 
 export default function IntroVideoRenderer({ content, sectionId }: any) {
   if (!content) return null;
-
+  const videoSrc =
+  content.video && content.video.trim().length > 0? content.video
+    : "/intro.mp4";
   return (
     <section
       id={sectionId}
       className="relative w-full min-h-screen overflow-hidden"
     >
       {/* Background Video */}
-      <video
-        src={content.video || "/intro.mp4"}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+
+    <video
+      src={videoSrc}
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="absolute inset-0 w-full h-full object-cover"
+      preload="auto"
+    />
+
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/50" />
