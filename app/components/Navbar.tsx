@@ -159,10 +159,10 @@ export default function Navbar({ sections, companyId, activeSection }: any) {
 
         {/* MOBILE MENU BUTTON */}
         <button
-          className="md:hidden p-2 rounded-md hover:bg-gray-100 transition"
+          className="md:hidden p-2 rounded-md hover:bg-gray-500 transition"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileOpen ? <X size={22} className="text-blue-600"/> : <Menu size={22} className="text-blue-600"/>}
         </button>
 
         {/* DESKTOP NAVIGATION */}
