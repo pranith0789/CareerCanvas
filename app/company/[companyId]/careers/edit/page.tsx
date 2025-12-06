@@ -54,14 +54,18 @@ async function loadJobs() {
     const res = await fetch(`/api/jobs`);
     const list: Job[] = await res.json();
 
-    // Sort: newest first
+    // Sort newest first:
     const sorted = list.sort((a, b) => {
-      // If created_at exists → use it
+      // If both have created_at → sort by created_at desc
       if (a.created_at && b.created_at) {
         return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
       }
 
-      // Fallback: Sort by id (newer UUIDs tend to be higher)
+      // If only one has created_at → created_at always comes first
+      if (a.created_at && !b.created_at) return -1;
+      if (!a.created_at && b.created_at) return 1;
+
+      // If neither has created_at → fallback to id DESC
       if (a.id && b.id) return b.id.localeCompare(a.id);
 
       return 0;
